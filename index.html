@@ -7,11 +7,686 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
-body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E9;color:#1B5E20;}header{background:linear-gradient(135deg,#2E7D32 0%,#4CAF50 50%,#66BB6A 100%);color:white;padding:25px 0;text-align:center;box-shadow:0 4px 12px rgba(46,125,50,0.3);position:relative;}h1{margin:0;font-size:3em;text-shadow:3px 3px 0 #4CAF50;letter-spacing:2px;animation:bounceIn 1s;}.subtitle{font-size:1.3em;margin-top:10px;text-shadow:2px 2px 0 #66BB6A;}.main-container{display:flex;margin:20px;justify-content:center;}.filter-sidebar{width:200px;padding:15px;background-color:white;border-radius:15px;box-shadow:5px 5px 15px rgba(0,0,0,0.1);margin-right:15px;position:sticky;top:20px;align-self:flex-start;}.filter-title{font-weight:bold;color:#2E7D32;font-size:1.2em;margin-bottom:10px;border-bottom:2px dashed #4CAF50;padding-bottom:5px;text-align:center;}.filter-group{margin-bottom:15px;}.filter-group select{width:100%;padding:8px;border-radius:10px;border:2px solid #A5D6A7;background-color:#F1F8E9;font-family:'Comic Neue',cursive;font-size:0.85em;cursor:pointer;margin-top:5px;}.filter-checkbox{display:flex;align-items:center;margin:8px 0;}.filter-checkbox input{margin-right:8px;accent-color:#2E7D32;}.search-box{width:100%;padding:10px;border-radius:10px;border:2px solid #A5D6A7;font-family:'Comic Neue',cursive;margin-bottom:15px;box-sizing:border-box;}.location-select{width:100%;padding:8px;border-radius:10px;border:2px solid #A5D6A7;background-color:#F1F8E9;font-family:'Comic Neue',cursive;font-size:0.85em;cursor:pointer;margin-top:15px;}.products-section{flex:1;max-width:900px;}.products-container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;padding:0 10px;}.product-card{background:white;border-radius:15px;box-shadow:0 8px 16px rgba(46,125,50,0.2);width:200px;padding:15px;text-align:center;transition:all 0.4s;animation:fadeInUp 0.8s;border:2px solid #A5D6A7;flex:0 0 calc(25% - 15px);box-sizing:border-box;}.product-card:hover{transform:translateY(-10px) rotate(2deg);box-shadow:0 15px 25px rgba(46,125,50,0.3);border-color:#2E7D32;}.product-image{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:10px;border:2px dashed #A5D6A7;}.product-title{font-weight:bold;margin:8px 0;color:#2E7D32;font-size:1em;}.product-description{color:#1B5E20;font-size:0.85em;margin:8px 0;}.product-price{color:#388E3C;font-weight:bold;font-size:1.2em;margin:10px 0;text-shadow:1px 1px 0 #DCEDC8;}.product-sale{background:#FF6B6B;color:white;padding:3px 8px;border-radius:10px;font-size:0.8em;margin-top:5px;display:inline-block;}.add-to-cart{background:linear-gradient(45deg,#2E7D32,#4CAF50);color:white;border:none;padding:8px 15px;border-radius:25px;cursor:pointer;font-family:'Comic Neue',cursive;font-weight:bold;font-size:0.9em;transition:all 0.3s;box-shadow:0 4px 8px rgba(46,125,50,0.3);}.add-to-cart:hover{transform:scale(1.1);box-shadow:0 6px 12px rgba(46,125,50,0.4);background:linear-gradient(45deg,#4CAF50,#2E7D32);}.cart-icon,.chatbot-icon{position:fixed;top:20px;right:20px;font-size:1.8em;color:white;cursor:pointer;background:#388E3C;width:60px;height:60px;border-radius:50%;display:flex;justify-content:center;align-items:center;box-shadow:0 4px 12px rgba(56,142,60,0.4);transition:all 0.3s;z-index:100;}.chatbot-icon{top:90px;}.cart-icon:hover,.chatbot-icon:hover{transform:rotate(15deg) scale(1.1);background:#A5D6A7;}.cart-count{position:absolute;top:-5px;right:-5px;background:#2E7D32;color:white;border-radius:50%;width:25px;height:25px;display:flex;justify-content:center;align-items:center;font-size:0.7em;font-weight:bold;}.cart-modal,.chatbot-modal,.impact-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);z-index:1000;justify-content:center;align-items:center;}.cart-content,.chatbot-content,.impact-content{background-color:white;border-radius:20px;width:80%;max-width:800px;max-height:80vh;overflow-y:auto;padding:30px;position:relative;animation:modalFadeIn 0.3s;}.close-cart,.close-chatbot,.close-impact{position:absolute;top:15px;right:15px;font-size:1.5em;color:#2E7D32;cursor:pointer;background:none;border:none;}.cart-items{margin:20px 0;}.cart-item{display:flex;align-items:center;margin-bottom:15px;padding-bottom:15px;border-bottom:2px dashed #A5D6A7;}.cart-item-img{width:80px;height:80px;object-fit:cover;border-radius:10px;margin-right:15px;border:2px solid #2E7D32;}.cart-item-details{flex:1;text-align:left;}.cart-item-title{font-weight:bold;color:#2E7D32;margin-bottom:5px;}.cart-item-price{color:#388E3C;font-weight:bold;}.cart-item-quantity{display:flex;align-items:center;margin-top:5px;}.quantity-btn{background:#A5D6A7;border:none;width:25px;height:25px;border-radius:50%;cursor:pointer;font-weight:bold;}.quantity-value{margin:0 10px;min-width:20px;text-align:center;}.cart-total{font-size:1.3em;font-weight:bold;text-align:right;margin-top:20px;color:#2E7D32;}.package-option,.delivery-option,.personalization-option{margin-top:20px;padding:15px;background-color:#F1F8E9;border-radius:15px;border:2px solid #A5D6A7;}.package-option label,.delivery-option label,.personalization-option label{display:flex;align-items:center;cursor:pointer;}.package-option input,.delivery-option input,.personalization-option input{margin-right:10px;accent-color:#2E7D32;}.personalization-option textarea{width:100%;padding:10px;border-radius:10px;border:2px solid #A5D6A7;font-family:'Comic Neue',cursive;margin-top:10px;resize:vertical;}.personalization-preview{margin-top:10px;color:#1B5E20;font-size:0.9em;border:2px dashed #A5D6A7;padding:10px;border-radius:10px;display:none;}.package-preview{display:none;margin-top:10px;text-align:center;}.package-image{max-width:200px;border-radius:10px;border:2px solid #2E7D32;margin:10px auto;}.promo-code,.delivery-form,.chatbot-form{margin-top:15px;display:flex;}.promo-code input,.delivery-form input,.chatbot-form input{flex:1;padding:10px;border-radius:10px 0 0 10px;border:2px solid #A5D6A7;font-family:'Comic Neue',cursive;}.delivery-form select{padding:10px;border-radius:0;border:2px solid #A5D6A7;font-family:'Comic Neue',cursive;}.promo-code button,.delivery-form button,.chatbot-form button{background:#2E7D32;color:white;border:none;padding:0 15px;border-radius:0 10px 10px 0;cursor:pointer;}.checkout-btn{background:linear-gradient(45deg,#388E3C,#2E7D32);color:white;border:none;padding:15px 30px;border-radius:50px;font-family:'Comic Neue',cursive;font-weight:bold;font-size:1.1em;cursor:pointer;margin-top:20px;width:100%;transition:all 0.3s;}.checkout-btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(56,142,60,0.4);}.pagination{display:flex;justify-content:center;margin:40px 0;flex-wrap:wrap;}.page-number{margin:0 5px;padding:8px 15px;border-radius:50%;background-color:white;border:2px solid #A5D6A7;color:#2E7D32;font-weight:bold;cursor:pointer;transition:all 0.3s;}.page-number:hover,.page-number.active{background-color:#2E7D32;color:white;border-color:#2E7D32;}.about-section{text-align:center;margin:40px 0;padding:20px;background-color:white;border-radius:15px;box-shadow:0 8px 16px rgba(46,125,50,0.2);}.impact-content h2{font-size:1.8em;color:#2E7D32;margin-bottom:15px;text-shadow:2px 2px 0 #A5D6A7;}.impact-content p{line-height:1.6;color:#1B5E20;}.story-card{display:inline-block;background:white;border-radius:15px;box-shadow:0 8px 16px rgba(46,125,50,0.2);width:200px;padding:15px;text-align:center;margin:10px;border:2px solid #A5D6A7;}.story-image{width:100%;height:120px;object-fit:cover;border-radius:10px;margin-bottom:10px;border:2px dashed #A5D6A7;}.story-title{font-weight:bold;color:#2E7D32;font-size:1em;margin-bottom:8px;}.story-text{font-size:0.85em;color:#1B5E20;}.feedback-form{margin:20px auto;padding:20px;background-color:#F1F8E9;border-radius:15px;border:2px solid #A5D6A7;max-width:600px;}.feedback-form h2{font-size:1.5em;color:#2E7D32;margin-bottom:15px;}.feedback-form input,.feedback-form textarea,.chatbot-form textarea{width:100%;padding:10px;border-radius:10px;border:2px solid #A5D6A7;font-family:'Comic Neue',cursive;margin-bottom:15px;box-sizing:border-box;}.feedback-form textarea,.chatbot-form textarea{resize:vertical;}.feedback-form button,.chatbot-form button{background:#2E7D32;color:white;border:none;padding:10px 20px;border-radius:25px;cursor:pointer;font-family:'Comic Neue',cursive;font-weight:bold;}.feedback-form button:hover,.chatbot-form button:hover{transform:scale(1.1);box-shadow:0 6px 12px rgba(46,125,50,0.4);}.feedback-success{display:none;margin:20px auto;padding:15px;background-color:#DCEDC8;border-radius:15px;border:2px solid #2E7D32;text-align:center;color:#1B5E20;}.feedback-success button{background:#2E7D32;color:white;border:none;padding:8px 15px;border-radius:25px;cursor:pointer;font-family:'Comic Neue',cursive;font-weight:bold;margin-top:10px;}.feedback-success button:hover{transform:scale(1.1);}.footer-content{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}.footer-about{margin-bottom:20px;max-width:600px;}.footer-about h2{font-size:1.8em;margin-bottom:15px;text-shadow:2px 2px 0 #66BB6A;}.footer-about p{margin-bottom:10px;line-height:1.6;}.footer-contact{margin-bottom:20px;}.footer-contact a,.impact-btn a{color:white;text-decoration:none;transition:all 0.3s;}.footer-contact a:hover,.impact-btn a:hover{text-decoration:underline;color:#DCEDC8;}.social-media{display:flex;justify-content:center;gap:20px;margin:20px 0;}.social-icon,.impact-btn a{color:white;font-size:1.8em;transition:all 0.3s;}.social-icon:hover,.impact-btn a:hover{transform:translateY(-5px) scale(1.2);}.impact-btn{margin:20px 0;}.copyright{margin-top:20px;font-size:0.9em;opacity:0.8;}footer{background:linear-gradient(135deg,#2E7D32 0%,#4CAF50 50%,#66BB6A 100%);color:white;padding:30px 20px;text-align:center;margin-top:40px;border-top:3px solid #2E7D32;}@keyframes bounceIn{0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.1);opacity:1;}100%{transform:scale(1);}}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}@keyframes modalFadeIn{from{opacity:0;transform:translateY(-50px);}to{opacity:1;transform:translateY(0);}}.delay-1{animation-delay:0.1s;}.delay-2{animation-delay:0.2s;}.delay-3{animation-delay:0.3s;}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #E8F5E9;
+            color: #1B5E20;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 50%, #66BB6A 100%);
+            color: white;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 0 #4CAF50;
+            letter-spacing: 1px;
+            animation: bounceIn 1s;
+        }
+
+        header .subtitle {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 0 #66BB6A;
+        }
+
+        header .search-box-top {
+            width: 250px;
+            padding: 10px;
+            border-radius: 25px;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+            font-size: 0.9em;
+            background: #F1F8E9;
+            outline: none;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            margin: 20px 40px;
+            gap: 20px;
+        }
+
+        /* Sidebar Filters */
+        .filter-sidebar {
+            width: 220px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
+        }
+
+        .filter-title {
+            font-weight: bold;
+            color: #2E7D32;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #4CAF50;
+            padding-bottom: 8px;
+            text-align: center;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group select,
+        .location-select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #A5D6A7;
+            background-color: #F1F8E9;
+            font-family: 'Comic Neue', cursive;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .filter-checkbox {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .filter-checkbox input {
+            margin-right: 8px;
+            accent-color: #2E7D32;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+            font-size: 0.9em;
+            background: #F1F8E9;
+            outline: none;
+        }
+
+        /* Products Section */
+        .products-section {
+            flex: 1;
+            max-width: 1000px;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .participating in creating a product card
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(46, 125, 50, 0.2);
+            padding: 15px;
+            text-align: center;
+            transition: all 0.4s;
+            animation: fadeInUp 0.8s;
+            border: 2px solid #A5D6A7;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 25px rgba(46, 125, 50, 0.3);
+            border-color: #2E7D32;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 2px dashed #A5D6A7;
+        }
+
+        .product-title {
+            font-weight: bold;
+            color: #2E7D32;
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+
+        .product-description {
+            color: #1B5E20;
+            font-size: 0.9em;
+            margin: 8px 0;
+        }
+
+        .product-price {
+            color: #388E3C;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 10px 0;
+            text-shadow: 1px 1px 0 #DCEDC8;
+        }
+
+        .product-sale {
+            background: #FF6B6B;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(45deg, #2E7D32, #4CAF50);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            font-size: 0.95em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+        }
+
+        /* Cart and Icons */
+        .cart-icon, .chatbot-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 1.8em;
+            color: white;
+            cursor: pointer;
+            background: #388E3C;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .chatbot-icon {
+            top: 80px;
+        }
+
+        .cart-icon:hover, .chatbot-icon:hover {
+            transform: rotate(15deg) scale(1.1);
+            background: #A5D6A7;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #2E7D32;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        /* Modals */
+        .cart-modal, .chatbot-modal, .impact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-content, .chatbot-content, .impact-content {
+            background-color: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+
+        .close-cart, .close-chatbot, .close-impact {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5em;
+            color: #2E7D32;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Cart Items */
+        .cart-items {
+            margin: 20px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed #A5D6A7;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 15px;
+            border: 2px solid #2E7D32;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #388E3C;
+            font-weight: bold;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            background: #A5D6A7;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        .quantity-value {
+            margin: 0 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-total {
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: #2E7D32;
+        }
+
+        /* Delivery, Personalization, and Promo */
+        .package-option, .delivery-option, .personalization-option {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #F1F8E9;
+            border-radius: 15px;
+            border: 2px solid #A5D6A7;
+        }
+
+        .package-option label, .delivery-option label, .personalization-option label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .package-option input, .deliverypolitician in creating a package option
+            .delivery-option input,
+            .personalization-option input {
+            margin-right: 10px;
+            accent-color: #2E7D32;
+        }
+
+        .personalization-option textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+            margin-top: 10px;
+            resize: vertical;
+        }
+
+        .personalization-preview {
+            margin-top: 10px;
+            color: #1B5E20;
+            font-size: 0.9em;
+            border: 2px dashed #A5D6A7;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .package-preview {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .package-image {
+            max-width: 200px;
+            border-radius: 10px;
+            border: 2px solid #2E7D32;
+            margin: 10px auto;
+        }
+
+        .promo-code, .delivery-form, .chatbot-form {
+            margin-top: 15px;
+            display: flex;
+        }
+
+        .promo-code input, .delivery-form input, .chatbot-form input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px 0 0 10px;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .delivery-form select {
+            padding: 10px;
+            border-radius: 0;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .promo-code button, .delivery-form button, .chatbot-form button {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(45deg, #388E3C, #2E7D32);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(56, 142, 60, 0.4);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            gap: 10px;
+        }
+
+        .page-number {
+            padding: 10px 15px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #A5D6A7;
+            color: #2E7D32;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .page-number:hover, .page-number.active {
+            background-color: #2E7D32;
+            color: white;
+            border-color: #2E7D32;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 50%, #66BB6A 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 3px solid #2E7D32;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-about h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0 #66BB6A;
+        }
+
+        .footer-about p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .footer-contact a, .impact-btn a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-contact a:hover, .impact-btn a:hover {
+            text-decoration: underline;
+            color: #DCEDC8;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.8em;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Feedback Form */
+        .feedback-form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #F1F8E9;
+            border-radius: 15px;
+            border: 2px solid #A5D6A7;
+            max-width: 600px;
+        }
+
+        .feedback-form h2 {
+            font-size: 1.5em;
+            color: #2E7D32;
+            margin-bottom: 15px;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea,
+        .chatbot-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #A5D6A7;
+            font-family: 'Comic Neue', cursive;
+            margin-bottom: 15px;
+        }
+
+        .feedback-form textarea,
+        .chatbot-form textarea {
+            resize: vertical;
+        }
+
+        .feedback-form button,
+        .chatbot-form button {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+        }
+
+        .feedback-form button:hover,
+        .chatbot-form button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
+        }
+
+        .feedback-success {
+            display: none;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: #DCEDC8;
+            border-radius: 15px;
+            border: 2px solid #2E7D32;
+            text-align: center;
+            color: #1B5E20;
+        }
+
+        .feedback-success button {
+            background: #2E7D32;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Comic Neue', cursive;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .feedback-success button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                margin: 20px;
+            }
+
+            .filter-sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .products-container {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header .search-box-top {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
+        <div class="header-left">
+            <h1>HENKA</h1>
+            <div class="subtitle">EL CAMBIO ESTÁ EN TUS MANOS</div>
+        </div>
+        <input type="text" class="search-box-top" placeholder="🔍 Buscar velas..." id="searchBoxTop">
         <div class="cart-icon" id="cartIcon">
             <i class="fas fa-shopping-cart"></i>
             <div class="cart-count">0</div>
@@ -19,10 +694,8 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
         <div class="chatbot-icon" id="chatbotIcon">
             <i class="fas fa-comment-alt"></i>
         </div>
-        <h1>HENKA</h1>
-        <div class="subtitle">EL CAMBIO ESTÁ EN TUS MANOS</div>
     </header>
-    
+
     <div class="main-container">
         <div class="filter-sidebar">
             <input type="text" class="search-box" placeholder="🔍 Buscar velas..." id="searchBox">
@@ -44,6 +717,26 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                 </select>
             </div>
             <div class="filter-group">
+                <select id="scent-filter">
+                    <option value="">Filtrar por aroma</option>
+                    <option value="lavanda">Lavanda</option>
+                    <option value="vainilla">Vainilla</option>
+                    <option value="citrus">Cítricos</option>
+                    <option value="jazmin">Jazmín</option>
+                    <option value="menta">Menta</option>
+                    <option value="canela">Canela</option>
+                    <option value="coco">Coco</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="duration-filter">
+                    <option value="">Duración de combustión</option>
+                    <option value="short">Menos de 40 horas</option>
+                    <option value="medium">40-45 horas</option>
+                    <option value="long">Más de 45 horas</option>
+                </select>
+            </div>
+            <div class="filter-group">
                 <div class="filter-checkbox">
                     <input type="checkbox" id="popular-filter">
                     <label for="popular-filter">Los más populares</label>
@@ -58,7 +751,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                 </div>
             </div>
         </div>
-        
+
         <div class="products-section">
             <div class="products-container" id="products-container">
                 <div class="product-card">
@@ -66,7 +759,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Soja Natural</div>
                     <div class="product-description">🌿 Cera de soja 100% natural, 40 horas de combustión</div>
                     <div class="product-price">S/ 25.00</div>
-                    <button class="add-to-cart" data-id="1" data-name="Vela de Soja Natural" data-price="25.00" data-image="image1.png">
+                    <button class="add-to-cart" data-id="1" data-name="Vela de Soja Natural" data-price="25.00" data-image="image1.png" data-scent="soja" data-duration="40">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -75,7 +768,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela Aromática Lavanda</div>
                     <div class="product-description">🌿 Cera de soja, envase reciclado, 45 horas</div>
                     <div class="product-price">S/ 30.00</div>
-                    <button class="add-to-cart" data-id="2" data-name="Vela Aromática Lavanda" data-price="30.00" data-image="image2.png">
+                    <button class="add-to-cart" data-id="2" data-name="Vela Aromática Lavanda" data-price="30.00" data-image="image2.png" data-scent="lavanda" data-duration="45">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -84,7 +777,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela Citrus Energizante</div>
                     <div class="product-description">🌿 Cera de soja natural, 42 horas de combustión</div>
                     <div class="product-price">S/ 28.00</div>
-                    <button class="add-to-cart" data-id="3" data-name="Vela Citrus Energizante" data-price="28.00" data-image="image3.png">
+                    <button class="add-to-cart" data-id="3" data-name="Vela Citrus Energizante" data-price="28.00" data-image="image3.png" data-scent="citrus" data-duration="42">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -93,7 +786,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Vainilla Orgánica</div>
                     <div class="product-description">🌿 Cera de soja, envase reciclado, 40 horas</div>
                     <div class="product-price">S/ 27.00</div>
-                    <button class="add-to-cart" data-id="4" data-name="Vela de Vainilla Orgánica" data-price="27.00" data-image="image4.png">
+                    <button class="add-to-cart" data-id="4" data-name="Vela de Vainilla Orgánica" data-price="27.00" data-image="image4.png" data-scent="vainilla" data-duration="40">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -102,7 +795,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Jazmín Relajante</div>
                     <div class="product-description">🌿 Cera de soja natural, 50 horas de combustión</div>
                     <div class="product-price">S/ 32.00</div>
-                    <button class="add-to-cart" data-id="5" data-name="Vela de Jazmín Relajante" data-price="32.00" data-image="image5.png">
+                    <button class="add-to-cart" data-id="5" data-name="Vela de Jazmín Relajante" data-price="32.00" data-image="image5.png" data-scent="jazmin" data-duration="50">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -111,7 +804,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Menta Refrescante</div>
                     <div class="product-description">🌿 Cera de soja, envase reciclado, 38 horas</div>
                     <div class="product-price">S/ 29.00 <span class="product-sale">OFERTA</span></div>
-                    <button class="add-to-cart" data-id="6" data-name="Vela de Menta Refrescante" data-price="29.00" data-image="image6.png">
+                    <button class="add-to-cart" data-id="6" data-name="Vela de Menta Refrescante" data-price="29.00" data-image="image6.png" data-scent="menta" data-duration="38">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -120,7 +813,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Canela Caliente</div>
                     <div class="product-description">🌿 Cera de soja natural, 48 horas de combustión</div>
                     <div class="product-price">S/ 35.00</div>
-                    <button class="add-to-cart" data-id="7" data-name="Vela de Canela Caliente" data-price="35.00" data-image="image7.png">
+                    <button class="add-to-cart" data-id="7" data-name="Vela de Canela Caliente" data-price="35.00" data-image="image7.png" data-scent="canela" data-duration="48">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
@@ -129,12 +822,12 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
                     <div class="product-title">Vela de Coco Tropical</div>
                     <div class="product-description">🌿 Cera de soja, envase reciclado, 46 horas</div>
                     <div class="product-price">S/ 36.00 <span class="product-sale">OFERTA</span></div>
-                    <button class="add-to-cart" data-id="8" data-name="Vela de Coco Tropical" data-price="36.00" data-image="image8.png">
+                    <button class="add-to-cart" data-id="8" data-name="Vela de Coco Tropical" data-price="36.00" data-image="image8.png" data-scent="coco" data-duration="46">
                         <i class="fas fa-cart-plus"></i> Añadir
                     </button>
                 </div>
             </div>
-            
+
             <div class="pagination">
                 <div class="page-number active">1</div>
                 <div class="page-number">2</div>
@@ -144,7 +837,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
             </div>
         </div>
     </div>
-    
+
     <footer>
         <div class="footer-content">
             <div class="footer-about">
@@ -180,7 +873,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
             </div>
         </div>
     </footer>
-    
+
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <button class="close-cart" id="closeCart">×</button>
@@ -214,7 +907,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
             </div>
             <div class="package-option">
                 <label>
-                    <input type="checkbox" id="packageCheckbox"> 
+                    <input type="checkbox" id="packageCheckbox">
                     📦 ¿Deseas empaque especial para regalo? (+S/ 10.00)
                     <a href="#" id="viewPackage" style="margin-left:10px;color:#2E7D32;text-decoration:none;">Ver empaquetado</a>
                 </label>
@@ -235,7 +928,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
             </button>
         </div>
     </div>
-    
+
     <div class="chatbot-modal" id="chatbotModal">
         <div class="chatbot-content">
             <button class="close-chatbot" id="closeChatbot">×</button>
@@ -248,7 +941,7 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
             </div>
         </div>
     </div>
-    
+
     <div class="impact-modal" id="impactModal">
         <div class="impact-content">
             <button class="close-impact" id="closeImpact">×</button>
@@ -269,7 +962,348 @@ body{font-family:'Comic Neue',cursive;margin:0;padding:0;background-color:#E8F5E
     </div>
 
     <script>
-let cart=[],cartTotal=0,deliveryCost=0,customScentCost=0;const cartIcon=document.getElementById("cartIcon"),cartModal=document.getElementById("cartModal"),closeCart=document.getElementById("closeCart"),cartItemsContainer=document.getElementById("cartItems"),emptyCartMessage=document.getElementById("emptyCartMessage"),cartTotalElement=document.getElementById("cartTotal"),cartCountElement=document.querySelector(".cart-count"),packageCheckbox=document.getElementById("packageCheckbox"),viewPackage=document.getElementById("viewPackage"),packagePreview=document.getElementById("packagePreview"),deliveryMethod=document.getElementById("deliveryMethod"),customScent=document.getElementById("customScent"),customMessage=document.getElementById("customMessage"),customMessagePreview=document.getElementById("customMessagePreview"),chatbotIcon=document.getElementById("chatbotIcon"),chatbotModal=document.getElementById("chatbotModal"),closeChatbot=document.getElementById("closeChatbot"),impactBtn=document.getElementById("impactBtn"),impactModal=document.getElementById("impactModal"),closeImpact=document.getElementById("closeImpact"),addToCartButtons=document.querySelectorAll(".add-to-cart"),searchBox=document.getElementById("searchBox"),priceFilter=document.getElementById("price-filter"),popularFilter=document.getElementById("popular-filter"),saleFilter=document.getElementById("sale-filter"),ecoFilter=document.getElementById("eco-filter"),productsContainer=document.getElementById("products-container"),products=Array.from(productsContainer.querySelectorAll(".product-card"));cartIcon.addEventListener("click",openCart);closeCart.addEventListener("click",closeCartModal);packageCheckbox.addEventListener("change",updateTotal);deliveryMethod.addEventListener("change",updateDelivery);customScent.addEventListener("change",updateCustomScent);customMessage.addEventListener("input",updateCustomMessage);viewPackage.addEventListener("click",e=>{e.preventDefault();packagePreview.style.display=packagePreview.style.display==="block"?"none":"block"});chatbotIcon.addEventListener("click",openChatbot);closeChatbot.addEventListener("click",closeChatbotModal);impactBtn.addEventListener("click",e=>{e.preventDefault();openImpact()});closeImpact.addEventListener("click",closeImpactModal);addToCartButtons.forEach(button=>{button.addEventListener("click",function(){const id=this.getAttribute("data-id"),name=this.getAttribute("data-name"),price=parseFloat(this.getAttribute("data-price")),image=this.getAttribute("data-image");addToCart(id,name,price,image);this.innerHTML='<i class="fas fa-check"></i> ¡Añadido!';setTimeout(()=>{this.innerHTML='<i class="fas fa-cart-plus"></i> Añadir'},1000)})});searchBox.addEventListener("input",filterProducts);priceFilter.addEventListener("change",filterProducts);popularFilter.addEventListener("change",filterProducts);saleFilter.addEventListener("change",filterProducts);ecoFilter.addEventListener("change",filterProducts);function filterProducts(){const searchTerm=searchBox.value.toLowerCase(),priceOrder=priceFilter.value,showPopular=popularFilter.checked,showSale=saleFilter.checked,showEco=ecoFilter.checked;let filteredProducts=products.filter(product=>{const title=product.querySelector(".product-title").textContent.toLowerCase(),price=parseFloat(product.querySelector(".product-price").textContent.replace("S/ ","")),isSale=product.querySelector(".product-sale")!==null,isEco=title.includes("eco")||title.includes("natural")||title.includes("orgánic");return title.includes(searchTerm)&&(!showPopular||true)&&(!showSale||isSale)&&(!showEco||isEco)});if(priceOrder==="asc"){filteredProducts.sort((a,b)=>{const priceA=parseFloat(a.querySelector(".product-price").textContent.replace("S/ ","")),priceB=parseFloat(b.querySelector(".product-price").textContent.replace("S/ ",""));return priceA-priceB})}else if(priceOrder==="desc"){filteredProducts.sort((a,b)=>{const priceA=parseFloat(a.querySelector(".product-price").textContent.replace("S/ ","")),priceB=parseFloat(b.querySelector(".product-price").textContent.replace("S/ ",""));return priceB-priceA})}productsContainer.innerHTML="";filteredProducts.forEach(product=>productsContainer.appendChild(product))}function addToCart(id,name,price,image){const existingItem=cart.find(item=>item.id===id);if(existingItem){existingItem.quantity+=1}else{cart.push({id,name,price,image,quantity:1,customScent:"",customMessage:""})}updateCartCount();renderCartItems();updateTotal();if(cart.length===1)openCart()}function updateCartCount(){const totalItems=cart.reduce((total,item)=>total+item.quantity,0);cartCountElement.textContent=totalItems}function renderCartItems(){if(cart.length===0){emptyCartMessage.style.display="block";cartItemsContainer.innerHTML="";cartItemsContainer.appendChild(emptyCartMessage);return}emptyCartMessage.style.display="none";let cartHTML="";cart.forEach(item=>{cartHTML+=`<div class="cart-item" data-id="${item.id}"><img src="${item.image}" alt="${item.name}" class="cart-item-img"><div class="cart-item-details"><div class="cart-item-title">${item.name}</div><div class="cart-item-price">S/${item.price.toFixed(2)}</div><div class="cart-item-quantity"><button class="quantity-btn minus-btn">-</button><span class="quantity-value">${item.quantity}</span><button class="quantity-btn plus-btn">+</button></div>${item.customScent?`<div>Aroma: ${item.customScent}</div>`:""}${item.customMessage?`<div>Mensaje: ${item.customMessage}</div>`:""}</div></div>`});cartItemsContainer.innerHTML=cartHTML;document.querySelectorAll(".minus-btn").forEach(btn=>btn.addEventListener("click",function(){const itemId=this.closest(".cart-item").getAttribute("data-id");decreaseQuantity(itemId)}));document.querySelectorAll(".plus-btn").forEach(btn=>btn.addEventListener("click",function(){const itemId=this.closest(".cart-item").getAttribute("data-id");increaseQuantity(itemId)}))}function increaseQuantity(itemId){const item=cart.find(item=>item.id===itemId);if(item){item.quantity+=1;updateCart()}}function decreaseQuantity(itemId){const itemIndex=cart.findIndex(item=>item.id===itemId);if(itemIndex!==-1){if(cart[itemIndex].quantity>1){cart[itemIndex].quantity-=1}else{cart.splice(itemIndex,1)}updateCart()}}function updateDelivery(){const method=deliveryMethod.value;deliveryCost=method==="standard"?8:15;updateTotal()}function updateCustomScent(){const scent=customScent.value;customScentCost=scent==="mix"?5:0;cart.forEach(item=>{item.customScent=scent;item.customMessage=customMessage.value});renderCartItems();updateCustomMessage();updateTotal()}function updateCustomMessage(){const message=customMessage.value;customMessagePreview.style.display=message.trim()? "block":"none";customMessagePreview.querySelector("span").textContent=message;cart.forEach(item=>item.customMessage=message);renderCartItems()}function applyDelivery(){const address=document.getElementById("deliveryAddress").value;if(address.trim()==="")return alert("Por favor, ingresa una dirección válida.");updateDelivery()}function applyPromo(){const promoCode=document.getElementById("promoCode").value;if(promoCode.toLowerCase()==="henka10"){cartTotal*=0.9;updateTotal();alert("¡Código promocional aplicado! 10% de descuento.")}else alert("Código promocional no válido.")}function submitFeedback(){const name=document.getElementById("feedbackName").value,email=document.getElementById("feedbackEmail").value,comments=document.getElementById("feedbackComments").value;if(name.trim()===""||email.trim()===""||comments.trim()==="")return alert("Por favor, completa todos los campos del formulario.");document.getElementById("feedbackSuccess").style.display="block";document.getElementById("feedbackName").value="";document.getElementById("feedbackEmail").value="";document.getElementById("feedbackComments").value=""}function closeFeedbackSuccess(){document.getElementById("feedbackSuccess").style.display="none"}function submitChatbot(){const name=document.getElementById("chatbotName").value,email=document.getElementById("chatbotEmail").value,message=document.getElementById("chatbotMessage").value;if(name.trim()===""||email.trim()===""||message.trim()==="")return alert("Por favor, completa todos los campos del formulario.");alert("¡Gracias por tu consulta! Te responderemos pronto.");document.getElementById("chatbotName").value="";document.getElementById("chatbotEmail").value="";document.getElementById("chatbotMessage").value="";closeChatbotModal()}function updateTotal(){let subtotal=cart.reduce((total,item)=>total+(item.price*item.quantity),0);if(packageCheckbox.checked)subtotal+=10;subtotal+=deliveryCost;subtotal+=customScentCost;cartTotal=subtotal;cartTotalElement.textContent=cartTotal.toFixed(2)}function updateCart(){updateCartCount();renderCartItems();updateTotal()}function openCart(){cartModal.style.display="flex";document.body.style.overflow="hidden"}function closeCartModal(){cartModal.style.display="none";document.body.style.overflow="auto"}function openChatbot(){chatbotModal.style.display="flex";document.body.style.overflow="hidden"}function closeChatbotModal(){chatbotModal.style.display="none";document.body.style.overflow="auto"}function openImpact(){impactModal.style.display="flex";document.body.style.overflow="hidden"}function closeImpactModal(){impactModal.style.display="none";document.body.style.overflow="auto"}cartModal.addEventListener("click",e=>{if(e.target===cartModal)closeCartModal()});chatbotModal.addEventListener("click",e=>{if(e.target===chatbotModal)closeChatbotModal()});impactModal.addEventListener("click",e=>{if(e.target===impactModal)closeImpactModal()});document.querySelectorAll(".page-number").forEach(page=>page.addEventListener("click",function(){document.querySelector(".page-number.active").classList.remove("active");this.classList.add("active")}));
+        let cart = [];
+        let cartTotal = 0;
+        let deliveryCost = 0;
+        let customScentCost = 0;
+
+        const cartIcon = document.getElementById("cartIcon");
+        const cartModal = document.getElementById("cartModal");
+        const closeCart = document.getElementById("closeCart");
+        const cartItemsContainer = document.getElementById("cartItems");
+        const emptyCartMessage = document.getElementById("emptyCartMessage");
+        const cartTotalElement = document.getElementById("cartTotal");
+        const cartCountElement = document.querySelector(".cart-count");
+        const packageCheckbox = document.getElementById("packageCheckbox");
+        const viewPackage = document.getElementById("viewPackage");
+        const packagePreview = document.getElementById("packagePreview");
+        const deliveryMethod = document.getElementById("deliveryMethod");
+        const customScent = document.getElementById("customScent");
+        const customMessage = document.getElementById("customMessage");
+        const customMessagePreview = document.getElementById("customMessagePreview");
+        const chatbotIcon = document.getElementById("chatbotIcon");
+        const chatbotModal = document.getElementById("chatbotModal");
+        const closeChatbot = document.getElementById("closeChatbot");
+        const impactBtn = document.getElementById("impactBtn");
+        const impactModal = document.getElementById("impactModal");
+        const closeImpact = document.getElementById("closeImpact");
+        const addToCartButtons = document.querySelectorAll(".add-to-cart");
+        const searchBox = document.getElementById("searchBox");
+        const searchBoxTop = document.getElementById("searchBoxTop");
+        const priceFilter = document.getElementById("price-filter");
+        const scentFilter = document.getElementById("scent-filter");
+        const durationFilter = document.getElementById("duration-filter");
+        const popularFilter = document.getElementById("popular-filter");
+        const saleFilter = document.getElementById("sale-filter");
+        const ecoFilter = document.getElementById("eco-filter");
+        const productsContainer = document.getElementById("products-container");
+        const products = Array.from(productsContainer.querySelectorAll(".product-card"));
+
+        cartIcon.addEventListener("click", openCart);
+        closeCart.addEventListener("click", closeCartModal);
+        packageCheckbox.addEventListener("change", updateTotal);
+        deliveryMethod.addEventListener("change", updateDelivery);
+        customScent.addEventListener("change", updateCustomScent);
+        customMessage.addEventListener("input", updateCustomMessage);
+        viewPackage.addEventListener("click", (e) => {
+            e.preventDefault();
+            packagePreview.style.display = packagePreview.style.display === "block" ? "none" : "block";
+        });
+        chatbotIcon.addEventListener("click", openChatbot);
+        closeChatbot.addEventListener("click", closeChatbotModal);
+        impactBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openImpact();
+        });
+        closeImpact.addEventListener("click", closeImpactModal);
+        addToCartButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const id = this.getAttribute("data-id");
+                const name = this.getAttribute("data-name");
+                const price = parseFloat(this.getAttribute("data-price"));
+                const image = this.getAttribute("data-image");
+                addToCart(id, name, price, image);
+                this.innerHTML = '<i class="fas fa-check"></i> ¡Añadido!';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-cart-plus"></i> Añadir';
+                }, 1000);
+            });
+        });
+        searchBox.addEventListener("input", filterProducts);
+        searchBoxTop.addEventListener("input", filterProducts);
+        priceFilter.addEventListener("change", filterProducts);
+        scentFilter.addEventListener("change", filterProducts);
+        durationFilter.addEventListener("change", filterProducts);
+        popularFilter.addEventListener("change", filterProducts);
+        saleFilter.addEventListener("change", filterProducts);
+        ecoFilter.addEventListener("change", filterProducts);
+
+        function filterProducts() {
+            const searchTerm = (searchBox.value || searchBoxTop.value).toLowerCase();
+            const priceOrder = priceFilter.value;
+            const scent = scentFilter.value;
+            const duration = durationFilter.value;
+            const showPopular = popularFilter.checked;
+            const showSale = saleFilter.checked;
+            const showEco = ecoFilter.checked;
+
+            let filteredProducts = products.filter(product => {
+                const title = product.querySelector(".product-title").textContent.toLowerCase();
+                const price = parseFloat(product.querySelector(".product-price").textContent.replace("S/ ", ""));
+                const isSale = product.querySelector(".product-sale") !== null;
+                const isEco = title.includes("eco") || title.includes("natural") || title.includes("orgánic");
+                const productScent = product.querySelector(".add-to-cart").getAttribute("data-scent");
+                const productDuration = parseFloat(product.querySelector(".add-to-cart").getAttribute("data-duration"));
+
+                let durationMatch = true;
+                if (duration === "short" && productDuration >= 40) durationMatch = false;
+                if (duration === "medium" && (productDuration < 40 || productDuration > 45)) durationMatch = false;
+                if (duration === "long" && productDuration <= 45) durationMatch = false;
+
+                return (
+                    title.includes(searchTerm) &&
+                    (!scent || productScent === scent) &&
+                    durationMatch &&
+                    (!showPopular || true) &&
+                    (!showSale || isSale) &&
+                    (!showEco || isEco)
+                );
+            });
+
+            if (priceOrder === "asc") {
+                filteredProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.querySelector(".product-price").textContent.replace("S/ ", ""));
+                    const priceB = parseFloat(b.querySelector(".product-price").textContent.replace("S/ ", ""));
+                    return priceA - priceB;
+                });
+            } else if (priceOrder === "desc") {
+                filteredProducts.sort((a, b) => {
+                    const priceA = parseFloat(a.querySelector(".product-price").textContent.replace("S/ ", ""));
+                    const priceB = parseFloat(b.querySelector(".product-price").textContent.replace("S/ ", ""));
+                    return priceB - priceA;
+                });
+            }
+
+            productsContainer.innerHTML = "";
+            filteredProducts.forEach(product => productsContainer.appendChild(product));
+        }
+
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, image, quantity: 1, customScent: "", customMessage: "" });
+            }
+            updateCartCount();
+            renderCartItems();
+            updateTotal();
+            if (cart.length === 1) openCart();
+        }
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCountElement.textContent = totalItems;
+        }
+
+        function renderCartItems() {
+            if (cart.length === 0) {
+                emptyCartMessage.style.display = "block";
+                cartItemsContainer.innerHTML = "";
+                cartItemsContainer.appendChild(emptyCartMessage);
+                return;
+            }
+            emptyCartMessage.style.display = "none";
+            let cartHTML = "";
+            cart.forEach(item => {
+                cartHTML += `
+                    <div class="cart-item" data-id="${item.id}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">S/${item.price.toFixed(2)}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn minus-btn">-</button>
+                                <span class="quantity-value">${item.quantity}</span>
+                                <button class="quantity-btn plus-btn">+</button>
+                            </div>
+                            ${item.customScent ? `<div>Aroma: ${item.customScent}</div>` : ""}
+                            ${item.customMessage ? `<div>Mensaje: ${item.customMessage}</div>` : ""}
+                        </div>
+                    </div>`;
+            });
+            cartItemsContainer.innerHTML = cartHTML;
+            document.querySelectorAll(".minus-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    const itemId = this.closest(".cart-item").getAttribute("data-id");
+                    decreaseQuantity(itemId);
+                });
+            });
+            document.querySelectorAll(".plus-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    const itemId = this.closest(".cart-item").getAttribute("data-id");
+                    increaseQuantity(itemId);
+                });
+            });
+        }
+
+        function increaseQuantity(itemId) {
+            const item = cart.find(item => item.id === itemId);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+            }
+        }
+
+        function decreaseQuantity(itemId) {
+            const itemIndex = cart.findIndex(item => item.id === itemId);
+            if (itemIndex !== -1) {
+                if (cart[itemIndex].quantity > 1) {
+                    cart[itemIndex].quantity -= 1;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                updateCart();
+            }
+        }
+
+        function updateDelivery() {
+            const method = deliveryMethod.value;
+            deliveryCost = method === "standard" ? 8 : 15;
+            updateTotal();
+        }
+
+        function updateCustomScent() {
+            const scent = customScent.value;
+            customScentCost = scent === "mix" ? 5 : 0;
+            cart.forEach(item => {
+                item.customScent = scent;
+                item.customMessage = customMessage.value;
+            });
+            renderCartItems();
+            updateCustomMessage();
+            updateTotal();
+        }
+
+        function updateCustomMessage() {
+            const message = customMessage.value;
+            customMessagePreview.style.display = message.trim() ? "block" : "none";
+            customMessagePreview.querySelector("span").textContent = message;
+            cart.forEach(item => item.customMessage = message);
+            renderCartItems();
+        }
+
+        function applyDelivery() {
+            const address = document.getElementById("deliveryAddress").value;
+            if (address.trim() === "") return alert("Por favor, ingresa una dirección válida.");
+            updateDelivery();
+        }
+
+        function applyPromo() {
+            const promoCode = document.getElementById("promoCode").value;
+            if (promoCode.toLowerCase() === "henka10") {
+                cartTotal *= 0.9;
+                updateTotal();
+                alert("¡Código promocional aplicado! 10% de descuento.");
+            } else {
+                alert("Código promocional no válido.");
+            }
+        }
+
+        function submitFeedback() {
+            const name = document.getElementById("feedbackName").value;
+            const email = document.getElementById("feedbackEmail").value;
+            const comments = document.getElementById("feedbackComments").value;
+            if (name.trim() === "" || email.trim() === "" || comments.trim() === "") {
+                return alert("Por favor, completa todos los campos del formulario.");
+            }
+            document.getElementById("feedbackSuccess").style.display = "block";
+            document.getElementById("feedbackName").value = "";
+            document.getElementById("feedbackEmail").value = "";
+            document.getElementById("feedbackComments").value = "";
+        }
+
+        function closeFeedbackSuccess() {
+            document.getElementById("feedbackSuccess").style.display = "none";
+        }
+
+        function submitChatbot() {
+            const name = document.getElementById("chatbotName").value;
+            const email = document.getElementById("chatbotEmail").value;
+            const message = document.getElementById("chatbotMessage").value;
+            if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+                return alert("Por favor, completa todos los campos del formulario.");
+            }
+            alert("¡Gracias por tu consulta! Te responderemos pronto.");
+            document.getElementById("chatbotName").value = "";
+            document.getElementById("chatbotEmail").value = "";
+            document.getElementById("chatbotMessage").value = "";
+            closeChatbotModal();
+        }
+
+        function updateTotal() {
+            let subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            if (packageCheckbox.checked) subtotal += 10;
+            subtotal += deliveryCost;
+            subtotal += customScentCost;
+            cartTotal = subtotal;
+            cartTotalElement.textContent = cartTotal.toFixed(2);
+        }
+
+        function updateCart() {
+            updateCartCount();
+            renderCartItems();
+            updateTotal();
+        }
+
+        function openCart() {
+            cartModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeCartModal() {
+            cartModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function openChatbot() {
+            chatbotModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeChatbotModal() {
+            chatbotModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function openImpact() {
+            impactModal.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeImpactModal() {
+            impactModal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        cartModal.addEventListener("click", (e) => {
+            if (e.target === cartModal) closeCartModal();
+        });
+
+        chatbotModal.addEventListener("click", (e) => {
+            if (e.target === chatbotModal) closeChatbotModal();
+        });
+
+        impactModal.addEventListener("click", (e) => {
+            if (e.target === impactModal) closeImpactModal();
+        });
+
+        document.querySelectorAll(".page-number").forEach(page => {
+            page.addEventListener("click", function() {
+                document.querySelector(".page-number.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
     </script>
 </body>
 </html>
